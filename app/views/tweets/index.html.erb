@@ -1,6 +1,25 @@
 <div class="contents row">
   <% @tweets.each do |tweet| %>
   <div class="content_post" style="background-image: url(<%= tweet.image %>);">
+    <div class = "more">
+      <span><%= image_tag 'arrow_top.png'%></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '詳細', tweet_path(tweet.id)%>
+        </li>
+        <li>
+<%# link_toでパスを指定してedit_tweetパスのtweetオブジェクトのidカラムを指定%>
+<%# クリックすると特定のツイートを編集するためのページに遷移するリンクを生成している %>
+          <%= link_to '編集', edit_tweet_path(tweet.id)%>
+        </li>
+        <li>
+<%# link_toでパスを指定してtweetパスのtweetオブジェクトのidカラムを指定 %>
+      <%# <%= link_to '削除', "/tweets/#{tweet.id}", data: { turbo_method: :delete } %>  %>
+          <%= link_to '削除', tweet_path(tweet.id), data: { turbo_method: :delete } %>
+<%# link_toメソッドはHTTPの指定がないとGETのリクエストを送信してしまうのでdata: { turbo_method: :delete }を記述するもの削除など行うときの技術的手段 %>
+        </li>
+      </ul>
+    </div>
     <p><%= tweet.text%></p>
     <span class="name">
       <%= tweet.name %>
