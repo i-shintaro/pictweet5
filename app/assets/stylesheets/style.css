@@ -153,7 +153,7 @@ pre {
 /*
  * Set consistent quote types. */
 q {
-  quotes: "“""”""‘""’";
+  quotes: "“" "”" "‘" "’";
 }
 
 /*
